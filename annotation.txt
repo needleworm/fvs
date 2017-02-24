@@ -1,5 +1,6 @@
-nodeA nodeB
-nodeA nodeC
-nodeB nodeD
-nodeD nodeA
-nodeB nodeB
+nodeA, nodeB
+nodeA, nodeC
+nodeB, nodeD
+nodeD, nodeA
+nodeB, nodeB
+nodeC, nodeA
