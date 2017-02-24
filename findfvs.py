@@ -8,25 +8,37 @@ import network as nt
 import time
 
 class FVSFinder:
-    feedback_vertex_set = []
+    feedback_vertex_set = {}
     n = 0
     current_size = 0
     network = None
     nodes = []
+    combinations = []
 
     def __init__(self, node_file, anno_file):
         self.network = nt.Network(node_file, anno_file)
         self.n = self.network.n
         self.nodes = self.network.nodes
+        self._combinations()
 
-    def _combinations(self, k):
-        combinations = []
+    def _combinations(self):
+        """
+        여기가 시간을 많이 잡아먹는 부분
+        """
+        combinations = {}
+        before = time.time()
+        for i in range(self.n + 1):
+            combinations[i] = []
         comb_max = 2 ** self.n
+        print("Total " + str(comb_max) + " kinds of combinations exits")
         for i in range(comb_max):
+            if i % 400000 == 0:
+                print(str(float(i) / comb_max * 100) + "% of combinations generated")
             combination = self._dec_2_binary_combination(i)
-            if sum(combination) == k:
-                combinations.append(combination)
-        return combinations
+            idx = sum(combination)
+            combinations[idx].append(combination)
+        print(str(time.time() - before) + " seconds spent for combination\n")
+        self.combinations = combinations
 
     def _dec_2_binary_combination(self, k):
         if not self.n:
@@ -55,16 +67,19 @@ class FVSFinder:
                 if matrix[i, j]:
                     target.append(j)
             graph[i] = target
+
+        truth = False
         for i in range(self.n):
             if graph[i]:
-                return self._dfs_cycle(graph, i)
+                truth += self._dfs_cycle(graph, i)
+        return truth
 
     def _dfs_cycle(self, graph, root):
         stack = []
         visited = []
         stack.append(root)
 
-        while(stack):
+        while stack:
             top = stack.pop()
             visited.append(top)
             if set(visited) & set(graph[top]):
@@ -75,9 +90,8 @@ class FVSFinder:
 
         return False
 
-    def _find_feedback_vertex_sets(self, fvs_size):
+    def _find_feedback_vertex_sets(self, combinations):
         FVS = []
-        combinations = self._combinations(fvs_size)
         for comb in combinations:
             matrix = self.network.remove_nodes(comb, self.n)
             if not self._is_there_cycle(matrix):
@@ -89,22 +103,61 @@ class FVSFinder:
         return FVS
 
     def find_all_fvs(self):
+        out = open("All_FVS.txt", 'w')
         before = time.time()
-        for i in range(self.n + 1):
+        print("Combination Done")
+        rng = self.n + 1
+        for i in range(rng):
+            temp = time.time()
             if i == 0:
                 continue
-            fvs = self._find_feedback_vertex_sets(i)
-            if not self.feedback_vertex_set:
-                self.feedback_vertex_set.extend(fvs)
-            else:
-                FVS = []
-                for fvs_earlier in self.feedback_vertex_set:
-                    for fvs_current in fvs:
-                        if set(fvs_earlier) | set(fvs_current) != set(fvs_current):
-                            FVS.append(fvs_current)
-                self.feedback_vertex_set.extend(FVS)
-        print(time.time() - before, end=" seconds spent.\n")
+            self.feedback_vertex_set[i] = self._find_feedback_vertex_sets(self.combinations[i])
+            print(self.feedback_vertex_set[i])
+            print("size " + str(i) + " FVS searching Done!")
+            print(str(time.time() - temp) + " seconds spent for this step.\n")
 
-a = FVSFinder("fumia_simplified_nodes.txt", "Fumia_simplified.csv")
+        earlier = []
+        for i in range(rng):
+            if i == 0:
+                continue
+            if not earlier:
+                earlier.extend(self.feedback_vertex_set[i])
+                continue
+            current = self.feedback_vertex_set[i]
+            self.feedback_vertex_set[i] = []
+            FVS = []
+            onOff = np.ones(len(current), dtype='bool')
+
+            for fvs_early in earlier:
+                for p, fvs_current in enumerate(current):
+                    if set(fvs_early) & set(fvs_current) == set(fvs_early):
+                        onOff[p] *= 0
+            for q in range(len(current)):
+                if onOff[q]:
+                    FVS.append(current[q])
+
+            earlier.extend(FVS)
+            self.feedback_vertex_set[i] = FVS
+
+        for i in range(rng):
+            if i == 0:
+                continue
+            for fvs in self.feedback_vertex_set[i]:
+                if fvs:
+                    out.write(str(fvs))
+                    out.write('\n')
+
+        print(str(time.time() - before) + " seconds spent for whole step..\n")
+        out.close()
+        count = 0
+        for i in range(rng):
+            if i == 0:
+                continue
+            cnt = len(self.feedback_vertex_set[i])
+            print("There are  " + str(cnt) + "minimal FVSs with size " + str(i) + ".")
+            count += cnt
+        print("Total " + str(count) + " minimal FVSs are found.")
+
+
+a = FVSFinder("mapk_nodes.txt", "mapk_annotation.txt")
 a.find_all_fvs()
-print(a.feedback_vertex_set)

@@ -3,9 +3,6 @@ WNT,PKC
 WNT,Dsh
 UbcH10,UbcH10
 UbcH10,cdh1/UbcH10
-TSC1/2,RHEB
-TNFa,TAK1
-TNFa,FADD
 TCF,Slug
 TCF,Myc
 TCF,CycD
@@ -60,10 +57,6 @@ GSK3/APC,bcat
 GSK3,Snail
 GSK3,GSK3/APC
 GSK3,CycD
-Gli,WNT
-Gli,Myc
-Gli,CycD
-GFs,RTK
 FADD,Caspase8
 ERK,TSC1/2
 ERK,Myc
@@ -85,10 +78,8 @@ CHK1/2,p53
 cdh1/UbcH10,CycA
 cdh1,UbcH10
 cdh1,cdh1/UbcH10
-Caspase9,Apoptosis
 Caspase8,Cytoc/APAF1
 Caspase8,Bak
-Caspase8,Apoptosis
 BclXL,Cytoc/APAF1
 Bcl2,p53
 Bcl2,Cytoc/APAF1
