@@ -5,6 +5,7 @@ needleworm@Kaist.ac.kr
 """
 import numpy as np
 import network as nt
+import time
 
 class FVSFinder:
     feedback_vertex_set = []
@@ -88,6 +89,7 @@ class FVSFinder:
         return FVS
 
     def find_all_fvs(self):
+        before = time.time()
         for i in range(self.n + 1):
             if i == 0:
                 continue
@@ -101,7 +103,8 @@ class FVSFinder:
                         if set(fvs_earlier) | set(fvs_current) != set(fvs_current):
                             FVS.append(fvs_current)
                 self.feedback_vertex_set.extend(FVS)
+        print(time.time() - before, end=" seconds spent.\n")
 
-a = FVSFinder("nodes.txt", "annotation.txt")
+a = FVSFinder("fumia_simplified_nodes.txt", "Fumia_simplified.csv")
 a.find_all_fvs()
 print(a.feedback_vertex_set)
