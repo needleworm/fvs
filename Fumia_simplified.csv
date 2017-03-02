@@ -40,7 +40,6 @@ p53,bcat
 p53,BAX
 p27,CycD
 p27,CycA
-Nutrients,AMP/ATP
 NFkB,Snail
 NFkB,Slug
 NFkB,Myc
@@ -48,7 +47,6 @@ NFkB,Ecadh
 NFkB,CycD
 NFkB,Bcl2
 NF1,Ras
-Mutagen,DNA_Damage
 Mdm2,Rb
 Mdm2,p53/Mdm2
 Mdm2,p53
