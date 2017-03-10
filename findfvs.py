@@ -21,8 +21,10 @@ class FVSFinder:
         self.n = self.network.n
         self.nodes = self.network.nodes
         if find_minimal_only:
+            print("\nFinding Minimal Feedback Vertex Sets\n")
             self.find_minimal_fvs()
         else:
+            print("\nFinding All Feedback Vertex Sets\n")
             self._combinations()
             self.find_all_fvs()
 
@@ -88,17 +90,22 @@ class FVSFinder:
                 self_feedback.append(i)
             else:
                 idx.append(i)
+        if self_feedback:
+            print("There are " + str(len(self_feedback)) + " self-feedback nodes on the network.\n\n")
 
+        print("********** Starting Main Process **********\n")
         for i in range(self.n - len(self_feedback)):
+            before_time = time.time()
+            print("Checking if size " + str(i + len(self_feedback)) + " FVS exists.")
             combination = self._single_combination(self.n - len(self_feedback), i)
             if self_feedback:
-                for j, comb in enumerate(combination):
-                    if comb:
-                        combination[j] = self._comb_mody(list(comb), self_feedback)
+                combination = self._comb_mody(combination, self_feedback)
             fvs = self._find_feedback_vertex_sets(combination)
             if fvs:
                 print(str(time.time() - before) + " seconds spent for Finding Minimal FVS.\n")
                 return fvs, i + len(self_feedback)
+            print("Size " + str(i + len(self_feedback)) + " FVS Doesn't Exist.")
+            print(str(time.time() - before_time) + " seconds spent for this step.\n")
         return fvs, 0
 
     def _combinations(self):

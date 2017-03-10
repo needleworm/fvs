@@ -2,20 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7cbd2da3-65db-4ca6-8b97-cba59d7e9da5" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/All_FVS.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Fumia_simplified.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/annotation.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fumia_simplified_nodes.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mapk_annotation.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mapk_nodes.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/nodes.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ppt.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/fvs.iml" afterPath="$PROJECT_DIR$/.idea/fvs.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/findfvs.py" afterPath="$PROJECT_DIR$/findfvs.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/network.py" afterPath="$PROJECT_DIR$/network.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/result/Minimal_FVS.txt" afterPath="$PROJECT_DIR$/result/Minimal_FVS.txt" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -33,8 +24,8 @@
       <file leaf-file-name="network.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/network.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="22" column="20" lean-forward="true" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+            <state relative-caret-position="702">
+              <caret line="40" column="38" lean-forward="false" selection-start-line="40" selection-start-column="38" selection-end-line="40" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -43,13 +34,13 @@
       <file leaf-file-name="findfvs.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/findfvs.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="57" column="29" lean-forward="false" selection-start-line="57" selection-start-column="29" selection-end-line="57" selection-end-column="29" />
+            <state relative-caret-position="331">
+              <caret line="95" column="60" lean-forward="false" selection-start-line="95" selection-start-column="60" selection-end-line="95" selection-end-column="60" />
               <folding>
                 <element signature="e#59#77#0" expanded="true" />
-                <element signature="e#4388#4468#0" expanded="false" />
-                <element signature="e#4517#5006#0" expanded="false" />
-                <element signature="e#5480#5835#0" expanded="false" />
+                <element signature="e#4897#4977#0" expanded="false" />
+                <element signature="e#5026#5515#0" expanded="false" />
+                <element signature="e#5989#6344#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -58,14 +49,21 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="3" column="47" lean-forward="false" selection-start-line="3" selection-start-column="47" selection-end-line="3" selection-end-column="47" />
+            <state relative-caret-position="72">
+              <caret line="4" column="35" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="4" selection-end-column="70" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Setup Script" />
+      </list>
+    </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -138,6 +136,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="fvs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fvs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fvs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="networks" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -345,9 +357,9 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#59#77#0" expanded="true" />
-            <element signature="e#4388#4468#0" expanded="false" />
-            <element signature="e#4517#5006#0" expanded="false" />
-            <element signature="e#5480#5835#0" expanded="false" />
+            <element signature="e#4897#4977#0" expanded="false" />
+            <element signature="e#5026#5515#0" expanded="false" />
+            <element signature="e#5989#6344#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -430,9 +442,9 @@
           <caret line="320" column="0" lean-forward="false" selection-start-line="320" selection-start-column="0" selection-end-line="320" selection-end-column="0" />
           <folding>
             <element signature="e#59#77#0" expanded="true" />
-            <element signature="e#4388#4468#0" expanded="false" />
-            <element signature="e#4517#5006#0" expanded="false" />
-            <element signature="e#5480#5835#0" expanded="false" />
+            <element signature="e#4897#4977#0" expanded="false" />
+            <element signature="e#5026#5515#0" expanded="false" />
+            <element signature="e#5989#6344#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -490,9 +502,9 @@
           <caret line="324" column="0" lean-forward="true" selection-start-line="324" selection-start-column="0" selection-end-line="324" selection-end-column="0" />
           <folding>
             <element signature="e#59#77#0" expanded="true" />
-            <element signature="e#4388#4468#0" expanded="false" />
-            <element signature="e#4517#5006#0" expanded="false" />
-            <element signature="e#5480#5835#0" expanded="false" />
+            <element signature="e#4897#4977#0" expanded="false" />
+            <element signature="e#5026#5515#0" expanded="false" />
+            <element signature="e#5989#6344#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -543,9 +555,9 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#59#77#0" expanded="true" />
-            <element signature="e#4388#4468#0" expanded="false" />
-            <element signature="e#4517#5006#0" expanded="false" />
-            <element signature="e#5480#5835#0" expanded="false" />
+            <element signature="e#4897#4977#0" expanded="false" />
+            <element signature="e#5026#5515#0" expanded="false" />
+            <element signature="e#5989#6344#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -633,29 +645,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/network.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="22" column="20" lean-forward="true" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+        <state relative-caret-position="702">
+          <caret line="40" column="38" lean-forward="false" selection-start-line="40" selection-start-column="38" selection-end-line="40" selection-end-column="38" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="47" lean-forward="false" selection-start-line="3" selection-start-column="47" selection-end-line="3" selection-end-column="47" />
+        <state relative-caret-position="72">
+          <caret line="4" column="35" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="4" selection-end-column="70" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/findfvs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="57" column="29" lean-forward="false" selection-start-line="57" selection-start-column="29" selection-end-line="57" selection-end-column="29" />
+        <state relative-caret-position="331">
+          <caret line="95" column="60" lean-forward="false" selection-start-line="95" selection-start-column="60" selection-end-line="95" selection-end-column="60" />
           <folding>
             <element signature="e#59#77#0" expanded="true" />
-            <element signature="e#4388#4468#0" expanded="false" />
-            <element signature="e#4517#5006#0" expanded="false" />
-            <element signature="e#5480#5835#0" expanded="false" />
+            <element signature="e#4897#4977#0" expanded="false" />
+            <element signature="e#5026#5515#0" expanded="false" />
+            <element signature="e#5989#6344#0" expanded="false" />
           </folding>
         </state>
       </provider>
