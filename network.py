@@ -15,14 +15,14 @@ class Network:
     def __init__(self, node_file, network_file):
         self.matrix = []
         self.nodes = []
+        print("initiation.....")
         f_node = open("networks/" + node_file)
         f_network = open("networks/" + network_file)
-
+        print("Network Reading...")
         for line in f_node:
             node = line.strip()
             if node:
                 self.nodes.append(node)
-
         self.n = len(self.nodes)
         self.matrix = np.zeros((self.n, self.n), dtype="bool")
 
@@ -38,6 +38,7 @@ class Network:
                 self.matrix[self.nodes.index(source), self.nodes.index(target)] = True
         f_node.close()
         f_network.close()
+        print("Adjacency Matrix Done")
 
     def remove_nodes(self, combination, size):
         modified_matrix = np.array(self.matrix)
