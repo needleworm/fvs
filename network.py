@@ -15,8 +15,8 @@ class Network:
     def __init__(self, node_file, network_file):
         self.matrix = []
         self.nodes = []
-        f_node = open(node_file)
-        f_network = open(network_file)
+        f_node = open("networks/" + node_file)
+        f_network = open("networks/" + network_file)
 
         for line in f_node:
             node = line.strip()

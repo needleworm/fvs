@@ -14,17 +14,94 @@ class FVSFinder:
     network = None
     nodes = []
     combinations = []
+    single_comb = []
 
-    def __init__(self, node_file, anno_file):
+    def __init__(self, node_file, anno_file, find_minimal_only=True):
         self.network = nt.Network(node_file, anno_file)
         self.n = self.network.n
         self.nodes = self.network.nodes
-        self._combinations()
+        if find_minimal_only:
+            self.find_minimal_fvs()
+        else:
+            self._combinations()
+            self.find_all_fvs()
+
+    def find_minimal_fvs(self):
+        before = time.time()
+        fvs, size = self._find_minimal_fvs()
+        print("All process Done!")
+        print("Total " + str(time.time() - before) + " seconds spent for overall process.\n")
+        if not fvs:
+            print("Something is Wrong. Cannot find any FVS")
+            exit(1)
+        print("Size of minimal FVS is " + str(size) + '.')
+        print("Total " + str(len(fvs)) + " minimal FVS exists.\n")
+        out = open("result/Minimal_FVS.txt", 'w')
+        for i, fv in enumerate(fvs):
+            out.write(str(fv))
+            if i != len(fvs) -1:
+                out.write('\n')
+        out.close()
+
+    def _single_combination(self, n, r):
+        combinations = []
+        temp = list(np.zeros(self.n, dtype="int"))
+        self._combination_generator(temp, 0, n, r, 0, r)
+        for comb in self.single_comb:
+            combi = np.zeros(n, dtype='bool')
+            for el in comb:
+                combi[el] = True
+            temp = []
+            for el in combi:
+                temp.append(el)
+            combinations.append(temp)
+        self.single_comb = []
+        return combinations
+
+    def _comb_mody(self, comb, self_feedback):
+        for i, combi in enumerate(comb):
+            temp = []
+            for val in combi:
+                temp.append(val)
+            for idx in self_feedback:
+                temp.insert(idx, True)
+            comb[i] = temp
+        return comb
+
+    def _combination_generator(self, lst, index, n, r, target, R):
+        if r == 0:
+            self.single_comb.append(list(lst[:R]))
+        elif target == n:
+            return
+        else:
+            lst[index] = target
+            self._combination_generator(lst, index + 1, n, r - 1, target + 1, R)
+            self._combination_generator(lst, index, n, r, target + 1, R)
+
+    def _find_minimal_fvs(self):
+        idx = []
+        self_feedback = []
+        fvs = []
+        before = time.time()
+        for i in range(self.n):
+            if self.network.matrix[i][i]:
+                self_feedback.append(i)
+            else:
+                idx.append(i)
+
+        for i in range(self.n - len(self_feedback)):
+            combination = self._single_combination(self.n - len(self_feedback), i)
+            if self_feedback:
+                for j, comb in enumerate(combination):
+                    if comb:
+                        combination[j] = self._comb_mody(list(comb), self_feedback)
+            fvs = self._find_feedback_vertex_sets(combination)
+            if fvs:
+                print(str(time.time() - before) + " seconds spent for Finding Minimal FVS.\n")
+                return fvs, i + len(self_feedback)
+        return fvs, 0
 
     def _combinations(self):
-        """
-        여기가 시간을 많이 잡아먹는 부분
-        """
         combinations = {}
         before = time.time()
         for i in range(self.n + 1):

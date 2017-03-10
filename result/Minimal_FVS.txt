@@ -1,0 +1,6 @@
+['AP1', 'FOS', 'GRB2', 'p38', 'PKC']
+['AP1', 'FOS', 'GRB2', 'p38', 'PLCG']
+['ERK', 'GRB2', 'JNK', 'p38', 'PKC']
+['ERK', 'GRB2', 'JNK', 'p38', 'PLCG']
+['FOS', 'GRB2', 'JNK', 'p38', 'PKC']
+['FOS', 'GRB2', 'JNK', 'p38', 'PLCG']
