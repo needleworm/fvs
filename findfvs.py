@@ -6,6 +6,7 @@ needleworm@Kaist.ac.kr
 import numpy as np
 import network as nt
 import time
+import tarjan as TJ
 
 class FVSFinder:
     feedback_vertex_set = {}
