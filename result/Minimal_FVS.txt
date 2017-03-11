@@ -1,2 +1,4 @@
-['nodeA', 'nodeB']
-['nodeB', 'nodeC']
+['AMP/ATP', 'BAX', 'bcat', 'BclXL', 'Caspase9', 'CycD', 'DNA_Damage', 'GSK3/APC']
+['AMP/ATP', 'BAX', 'BclXL', 'Caspase9', 'CycD', 'Cytoc/APAF1', 'DNA_Damage', 'GSK3/APC']
+['Apoptosis', 'BAX', 'bcat', 'BclXL', 'Caspase9', 'CycD', 'DNA_Damage', 'GSK3/APC']
+['Apoptosis', 'BAX', 'BclXL', 'Caspase9', 'CycD', 'Cytoc/APAF1', 'DNA_Damage', 'GSK3/APC']
