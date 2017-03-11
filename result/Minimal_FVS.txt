@@ -1,4 +1,4 @@
-['AMP/ATP', 'BAX', 'bcat', 'BclXL', 'Caspase9', 'CycD', 'DNA_Damage', 'GSK3/APC']
-['AMP/ATP', 'BAX', 'BclXL', 'Caspase9', 'CycD', 'Cytoc/APAF1', 'DNA_Damage', 'GSK3/APC']
-['Apoptosis', 'BAX', 'bcat', 'BclXL', 'Caspase9', 'CycD', 'DNA_Damage', 'GSK3/APC']
-['Apoptosis', 'BAX', 'BclXL', 'Caspase9', 'CycD', 'Cytoc/APAF1', 'DNA_Damage', 'GSK3/APC']
+['BAX', 'CycA', 'CycD', 'E2F', 'GSK3', 'NFkB', 'p53', 'UbcH10']
+['BAX', 'CycA', 'E2F', 'GSK3', 'NFkB', 'p27', 'p53', 'UbcH10']
+['Bcl2', 'CycA', 'CycD', 'E2F', 'GSK3', 'NFkB', 'p53', 'UbcH10']
+['Bcl2', 'CycA', 'E2F', 'GSK3', 'NFkB', 'p27', 'p53', 'UbcH10']
