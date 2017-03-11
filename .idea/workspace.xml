@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7cbd2da3-65db-4ca6-8b97-cba59d7e9da5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/checker.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/findfvs.py" afterPath="$PROJECT_DIR$/findfvs.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/result/Minimal_FVS.txt" afterPath="$PROJECT_DIR$/result/Minimal_FVS.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,8 +21,8 @@
       <file leaf-file-name="network.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/network.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="67" column="26" lean-forward="true" selection-start-line="67" selection-start-column="26" selection-end-line="67" selection-end-column="26" />
+            <state relative-caret-position="216">
+              <caret line="12" column="14" lean-forward="false" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -33,14 +31,13 @@
       <file leaf-file-name="findfvs.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/findfvs.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-150">
-              <caret line="122" column="32" lean-forward="true" selection-start-line="122" selection-start-column="32" selection-end-line="122" selection-end-column="32" />
+            <state relative-caret-position="144">
+              <caret line="22" column="26" lean-forward="false" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
               <folding>
                 <element signature="e#59#77#0" expanded="true" />
-                <element signature="e#1626#2075#0" expanded="false" />
-                <element signature="e#2132#2373#0" expanded="false" />
-                <element signature="e#2450#2756#0" expanded="false" />
-                <element signature="e#5107#5462#0" expanded="false" />
+                <element signature="e#1993#2442#0" expanded="false" />
+                <element signature="e#2499#2740#0" expanded="false" />
+                <element signature="e#2817#3123#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -49,18 +46,8 @@
       <file leaf-file-name="Fumia_cytoscape.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/networks/Fumia_cytoscape.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="21" column="8" lean-forward="false" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Minimal_FVS.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/result/Minimal_FVS.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="3" column="23" lean-forward="false" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
+            <state relative-caret-position="205">
+              <caret line="58" column="4" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -69,8 +56,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+            <state relative-caret-position="198">
+              <caret line="11" column="74" lean-forward="false" selection-start-line="11" selection-start-column="74" selection-end-line="11" selection-end-column="74" />
               <folding />
             </state>
           </provider>
@@ -101,6 +88,19 @@
       <find>cyca</find>
       <find>Ubc</find>
       <find>bax</find>
+      <find>nfkb</find>
+      <find>snail</find>
+      <find>gsk3</find>
+      <find>akt</find>
+      <find>pip3</find>
+      <find>rb</find>
+      <find>ecadh</find>
+      <find>slug</find>
+      <find>p27</find>
+      <find>mdm2</find>
+      <find>p53/mdm2</find>
+      <find>ikk</find>
+      <find>GSK3</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -123,10 +123,10 @@
         <option value="$PROJECT_DIR$/networks/fumia_simplified_nodes.txt" />
         <option value="$PROJECT_DIR$/networks/Fumoa_cytoscape.txt" />
         <option value="$PROJECT_DIR$/network.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/networks/Fumia_Cytoscape.csv" />
         <option value="$PROJECT_DIR$/networks/Fumia_cytoscape.txt" />
         <option value="$PROJECT_DIR$/checker.py" />
+        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/findfvs.py" />
       </list>
     </option>
@@ -408,10 +408,9 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#59#77#0" expanded="true" />
-            <element signature="e#1626#2075#0" expanded="false" />
-            <element signature="e#2132#2373#0" expanded="false" />
-            <element signature="e#2450#2756#0" expanded="false" />
-            <element signature="e#5107#5462#0" expanded="false" />
+            <element signature="e#1993#2442#0" expanded="false" />
+            <element signature="e#2499#2740#0" expanded="false" />
+            <element signature="e#2817#3123#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -438,10 +437,9 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#59#77#0" expanded="true" />
-            <element signature="e#1626#2075#0" expanded="false" />
-            <element signature="e#2132#2373#0" expanded="false" />
-            <element signature="e#2450#2756#0" expanded="false" />
-            <element signature="e#5107#5462#0" expanded="false" />
+            <element signature="e#1993#2442#0" expanded="false" />
+            <element signature="e#2499#2740#0" expanded="false" />
+            <element signature="e#2817#3123#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -468,10 +466,9 @@
           <caret line="320" column="0" lean-forward="false" selection-start-line="320" selection-start-column="0" selection-end-line="320" selection-end-column="0" />
           <folding>
             <element signature="e#59#77#0" expanded="true" />
-            <element signature="e#1626#2075#0" expanded="false" />
-            <element signature="e#2132#2373#0" expanded="false" />
-            <element signature="e#2450#2756#0" expanded="false" />
-            <element signature="e#5107#5462#0" expanded="false" />
+            <element signature="e#1993#2442#0" expanded="false" />
+            <element signature="e#2499#2740#0" expanded="false" />
+            <element signature="e#2817#3123#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -501,10 +498,9 @@
           <caret line="324" column="0" lean-forward="true" selection-start-line="324" selection-start-column="0" selection-end-line="324" selection-end-column="0" />
           <folding>
             <element signature="e#59#77#0" expanded="true" />
-            <element signature="e#1626#2075#0" expanded="false" />
-            <element signature="e#2132#2373#0" expanded="false" />
-            <element signature="e#2450#2756#0" expanded="false" />
-            <element signature="e#5107#5462#0" expanded="false" />
+            <element signature="e#1993#2442#0" expanded="false" />
+            <element signature="e#2499#2740#0" expanded="false" />
+            <element signature="e#2817#3123#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -527,10 +523,9 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#59#77#0" expanded="true" />
-            <element signature="e#1626#2075#0" expanded="false" />
-            <element signature="e#2132#2373#0" expanded="false" />
-            <element signature="e#2450#2756#0" expanded="false" />
-            <element signature="e#5107#5462#0" expanded="false" />
+            <element signature="e#1993#2442#0" expanded="false" />
+            <element signature="e#2499#2740#0" expanded="false" />
+            <element signature="e#2817#3123#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -587,22 +582,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/network.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="67" column="26" lean-forward="true" selection-start-line="67" selection-start-column="26" selection-end-line="67" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/networks/Fumia_cytoscape.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="21" column="8" lean-forward="false" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/result/Minimal_FVS.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
@@ -611,24 +590,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/networks/Fumia_cytoscape.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="58" column="4" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+        <state relative-caret-position="198">
+          <caret line="11" column="74" lean-forward="false" selection-start-line="11" selection-start-column="74" selection-end-line="11" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/network.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="14" lean-forward="false" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/findfvs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-150">
-          <caret line="122" column="32" lean-forward="true" selection-start-line="122" selection-start-column="32" selection-end-line="122" selection-end-column="32" />
+        <state relative-caret-position="144">
+          <caret line="22" column="26" lean-forward="false" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
           <folding>
             <element signature="e#59#77#0" expanded="true" />
-            <element signature="e#1626#2075#0" expanded="false" />
-            <element signature="e#2132#2373#0" expanded="false" />
-            <element signature="e#2450#2756#0" expanded="false" />
-            <element signature="e#5107#5462#0" expanded="false" />
+            <element signature="e#1993#2442#0" expanded="false" />
+            <element signature="e#2499#2740#0" expanded="false" />
+            <element signature="e#2817#3123#0" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -31,8 +31,16 @@ class FVSFinder:
             self._combinations()
             self.find_all_fvs()
 
-#    def checker(self, fvs_found):
-#        for node in fvs_found:
+    def checker(self, fvs_found):
+        for node in fvs_found:
+            self.network._remove_node_from_network(self.network.nodes.index(node))
+        self.network._trim_none_feedback_nodes()
+        self.nodes = self.network.nodes
+        self.n = self.network.n
+        if self._is_there_cycle(self.network.matrix, print_path=True):
+            print("The Set is Not FVS")
+        else:
+            print("This Set is an FVS")
 
     def find_minimal_fvs(self):
         before = time.time()
@@ -118,9 +126,10 @@ class FVSFinder:
             print(str(time.time() - before_time) + " seconds spent for this step.\n")
         return fvs, 0
 
-    def _is_there_cycle(self, matrix):
+    def _is_there_cycle(self, matrix, print_path=False):
         for i in range(self.n):
-            matrix[i, i] = False
+            if matrix[i][i]:
+                return True
         graph = {}
         for i in range(self.n):
             target = []
@@ -132,11 +141,12 @@ class FVSFinder:
         truth = False
         for i in range(self.n):
             if graph[i]:
-                truth += self._dfs_cycle(graph, i)
+                truth += self._dfs_cycle(graph, i, print_path)
+                if truth:
+                    return truth
         return truth
 
-    @staticmethod
-    def _dfs_cycle(graph, root):
+    def _dfs_cycle(self, graph, root, path_print=False):
         stack = []
         visited = []
         stack.append(root)
@@ -145,6 +155,15 @@ class FVSFinder:
             top = stack.pop()
             visited.append(top)
             if set(visited) & set(graph[top]):
+                target = list(set(visited) & set(graph[top]))[0]
+                if path_print:
+                    #idx = visited.index(target)
+                    idx = 0
+                    print("\nCycle")
+                    while idx < len(visited):
+                        print(self.nodes[visited[idx]] + "  ")
+                        idx += 1
+                    print(self.nodes[target])
                 return True
             targets = list(set(graph[top]) - set(visited))
             targets.sort()
