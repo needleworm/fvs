@@ -32,13 +32,20 @@ class FVSFinder:
             self._combinations()
             self.find_all_fvs()
 
+    def _tarjan_check(self, graph):
+        scc = TJ.tarjan(graph)
+        for sc in scc:
+            if len(sc) != 1:
+                return True
+        return False
+
     def checker(self, fvs_found):
         for node in fvs_found:
             self.network._remove_node_from_network(self.network.nodes.index(node))
         self.network._trim_none_feedback_nodes()
         self.nodes = self.network.nodes
         self.n = self.network.n
-        if self._is_there_cycle(self.network.matrix, print_path=True):
+        if self._tarjan_check(self._graph_generator()):
             print("The Set is Not FVS")
         else:
             print("This Set is an FVS")
@@ -127,10 +134,7 @@ class FVSFinder:
             print(str(time.time() - before_time) + " seconds spent for this step.\n")
         return fvs, 0
 
-    def _is_there_cycle(self, matrix, print_path=False):
-        for i in range(self.n):
-            if matrix[i][i]:
-                return True
+    def _graph_generator(self, matrix):
         graph = {}
         for i in range(self.n):
             target = []
@@ -138,16 +142,23 @@ class FVSFinder:
                 if matrix[i, j]:
                     target.append(j)
             graph[i] = target
+        return graph
 
+    def _is_there_cycle(self, matrix):
+        for i in range(self.n):
+            if matrix[i][i]:
+                return True
+        graph = self._graph_generator(matrix)
         truth = False
         for i in range(self.n):
             if graph[i]:
-                truth += self._dfs_cycle(graph, i, print_path)
+                truth += self._dfs_cycle(graph, i,)
                 if truth:
                     return truth
         return truth
 
-    def _dfs_cycle(self, graph, root, path_print=False):
+
+    def _dfs_cycle(self, graph, root):
         stack = []
         visited = []
         stack.append(root)
@@ -156,21 +167,13 @@ class FVSFinder:
             top = stack.pop()
             visited.append(top)
             if set(visited) & set(graph[top]):
-                target = list(set(visited) & set(graph[top]))[0]
-                if path_print:
-                    #idx = visited.index(target)
-                    idx = 0
-                    print("\nCycle")
-                    while idx < len(visited):
-                        print(self.nodes[visited[idx]] + "  ")
-                        idx += 1
-                    print(self.nodes[target])
-                return True
+                return self._tarjan_check(graph)
             targets = list(set(graph[top]) - set(visited))
             targets.sort()
             stack.extend(targets)
 
         return False
+
 
     def _find_feedback_vertex_sets(self, combinations):
         FVS = []
