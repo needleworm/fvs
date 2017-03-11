@@ -32,12 +32,12 @@ class Network:
 
         for line in f_network:
             if line.strip():
-                split = line.split(',')
+                split = line.strip().split(',')
                 source = split[0].strip()
                 target = split[1].strip()
                 if (source not in self.nodes) or (target not in self.nodes):
                     print("\nError Occured!\nplease check if both " + source + " and " +
-                          target + "are listed in your node file.\n")
+                          target + " are listed in your node file.\n")
                     exit(1)
                 self.matrix[self.nodes.index(source), self.nodes.index(target)] = True
         f_node.close()
@@ -68,6 +68,7 @@ class Network:
                     x += 1
             if i != idx:
                 y += 1
+        self.nodes.remove(self.nodes[idx])
         self.matrix = new_matrix
 
     def _is_there_none_feedback_node(self):

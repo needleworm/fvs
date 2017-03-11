@@ -19,3 +19,11 @@ RSK
 SPRY
 PPP2CA
 CREB
+SOS
+p70
+MYC
+Proliferation
+p14
+MDM2
+Bcl2
+MAX

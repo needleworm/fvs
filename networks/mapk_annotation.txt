@@ -35,3 +35,13 @@ ERK, RSK
 ERK, SPRY
 p38, PPP2CA
 MSK, CREB
+RSK, SOS
+GRB2, SOS
+ERK, p70
+MSK, MYC
+p70, Proliferation
+MYC, Proliferation
+MYC, p14
+p14, MDM2
+p38, MAX
+CREB, Bcl2
