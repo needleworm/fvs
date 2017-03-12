@@ -17,16 +17,19 @@ class FVSFinder:
     combinations = []
     single_comb = []
     self_feedback = []
+    temp = []
 
     def __init__(self, node_file, anno_file, find_minimal_only=True, checker=False, fvs_found = []):
         self.network = nt.Network(node_file, anno_file)
         self.n = self.network.n
         self.nodes = self.network.nodes
+        self.temp = list(np.zeros(self.n, dtype="int"))
         if checker:
             self.checker(fvs_found)
         elif find_minimal_only:
             print("\nFinding Minimal Feedback Vertex Sets\n")
             self.find_minimal_fvs()
+
         else:
             print("\nFinding All Feedback Vertex Sets\n")
             self._combinations()
@@ -35,7 +38,7 @@ class FVSFinder:
     def _tarjan_check(self, graph):
         scc = TJ.tarjan(graph)
         for sc in scc:
-            if len(sc) != 1:
+            if len(sc) > 1:
                 return True
         return False
 
@@ -45,7 +48,7 @@ class FVSFinder:
         self.network._trim_none_feedback_nodes()
         self.nodes = self.network.nodes
         self.n = self.network.n
-        if self._tarjan_check(self._graph_generator()):
+        if self._tarjan_check(self._graph_generator(self.network.matrix, self.n)):
             print("The Set is Not FVS")
         else:
             print("This Set is an FVS")
@@ -62,25 +65,14 @@ class FVSFinder:
         print("Total " + str(len(fvs)) + " minimal FVS exists.\n")
         out = open("result/Minimal_FVS.txt", 'w')
         for i, fv in enumerate(fvs):
-            out.write(str(fv))
-            if i != len(fvs) -1:
+            out.write(str(self.self_feedback + fv))
+            if i != len(fvs) - 1:
                 out.write('\n')
         out.close()
 
-    def _single_combination(self, n, r):
-        combinations = []
-        temp = list(np.zeros(self.n, dtype="int"))
-        self._combination_generator(temp, 0, n, r, 0, r)
-        for comb in self.single_comb:
-            combi = np.zeros(n, dtype='bool')
-            for el in comb:
-                combi[el] = True
-            temp = []
-            for el in combi:
-                temp.append(el)
-            combinations.append(temp)
+    def _single_combination(self, r):
         self.single_comb = []
-        return combinations
+        self._combination_generator(self.temp, 0, self.n, r, 0, r)
 
     def _comb_mody(self, comb, self_feedback):
         for i, combi in enumerate(comb):
@@ -106,13 +98,18 @@ class FVSFinder:
         idx = []
         for i in range(self.n):
             if self.network.matrix[i][i]:
-                self.self_feedback.append(i)
+                self.self_feedback.append(self.nodes[i])
             else:
                 idx.append(i)
+        for sf in self.self_feedback:
+            self.network._remove_node_from_network(self.network.nodes.index(sf))
+        self.network._trim_none_feedback_nodes()
+        self.n = self.network.n
+        self.nodes = self.network.nodes
         return idx
 
     def _find_minimal_fvs(self):
-        idx = self._find_self_feedback()
+        self._find_self_feedback()
         fvs = []
         before = time.time()
 
@@ -120,25 +117,23 @@ class FVSFinder:
             print("There are " + str(len(self.self_feedback)) + " self-feedback nodes on the network.\n\n")
 
         print("********** Starting Main Process **********\n")
-        for i in range(self.n - len(self.self_feedback)):
+        for i in range(1, self.n + 1):
             before_time = time.time()
-            print("Checking if size " + str(i + len(self.self_feedback) + 1) + " FVS exists.")
-            combination = self._single_combination(self.n - len(self.self_feedback), i + 1)
-            if self.self_feedback:
-                combination = self._comb_mody(combination, self.self_feedback)
-            fvs = self._find_feedback_vertex_sets(combination)
+            print("Checking if size " + str(i + len(self.self_feedback)) + " FVS exists.")
+            self._single_combination(i)
+            fvs = self._find_feedback_vertex_sets(self.single_comb)
             if fvs:
                 print(str(time.time() - before) + " seconds spent for Finding Minimal FVS.\n")
-                return fvs, i + len(self.self_feedback) + 1
-            print("Size " + str(i + len(self.self_feedback) + 1) + " FVS Doesn't Exist.")
+                return fvs, i + len(self.self_feedback)
+            print("Size " + str(i + len(self.self_feedback)) + " FVS Doesn't Exist.")
             print(str(time.time() - before_time) + " seconds spent for this step.\n")
         return fvs, 0
 
-    def _graph_generator(self, matrix):
+    def _graph_generator(self, matrix, n):
         graph = {}
-        for i in range(self.n):
+        for i in range(n):
             target = []
-            for j in range(self.n):
+            for j in range(n):
                 if matrix[i, j]:
                     target.append(j)
             graph[i] = target
@@ -148,15 +143,13 @@ class FVSFinder:
         for i in range(self.n):
             if matrix[i][i]:
                 return True
-        graph = self._graph_generator(matrix)
-        truth = False
+        graph = self._graph_generator(matrix, self.n)
         for i in range(self.n):
             if graph[i]:
-                truth += self._dfs_cycle(graph, i,)
-                if truth:
-                    return truth
-        return truth
-
+                if self._dfs_cycle(graph, i):
+                    return True
+        print(1)
+        return False
 
     def _dfs_cycle(self, graph, root):
         stack = []
@@ -174,16 +167,14 @@ class FVSFinder:
 
         return False
 
-
     def _find_feedback_vertex_sets(self, combinations):
         FVS = []
         for comb in combinations:
-            matrix = self.network.remove_nodes(comb, self.n)
+            matrix = self.network.remove_nodes(comb)
             if not self._is_there_cycle(matrix):
                 fvs = []
-                for i, bool in enumerate(comb):
-                    if bool:
-                        fvs.append(self.nodes[i])
+                for idx in comb:
+                    fvs.append(self.nodes[idx])
                 FVS.append(fvs)
         return FVS
 

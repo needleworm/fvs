@@ -5,6 +5,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/findfvs.py" afterPath="$PROJECT_DIR$/findfvs.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/network.py" afterPath="$PROJECT_DIR$/network.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/result/Minimal_FVS.txt" afterPath="$PROJECT_DIR$/result/Minimal_FVS.txt" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,8 +24,8 @@
       <file leaf-file-name="network.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/network.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="12" column="14" lean-forward="false" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
+            <state relative-caret-position="444">
+              <caret line="82" column="37" lean-forward="true" selection-start-line="82" selection-start-column="37" selection-end-line="82" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -33,13 +34,11 @@
       <file leaf-file-name="findfvs.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/findfvs.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="129">
-              <caret line="133" column="32" lean-forward="true" selection-start-line="133" selection-start-column="32" selection-end-line="133" selection-end-column="32" />
+            <state relative-caret-position="288">
+              <caret line="52" column="13" lean-forward="true" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="13" />
               <folding>
                 <element signature="e#59#77#0" expanded="true" />
-                <element signature="e#2167#2616#0" expanded="false" />
-                <element signature="e#2673#2914#0" expanded="false" />
-                <element signature="e#2991#3297#0" expanded="false" />
+                <element signature="e#2428#2669#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -48,18 +47,8 @@
       <file leaf-file-name="Fumia_cytoscape.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/networks/Fumia_cytoscape.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="94" column="8" lean-forward="false" selection-start-line="94" selection-start-column="5" selection-end-line="94" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mapk_annotation.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/networks/mapk_annotation.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="295">
+              <caret line="51" column="9" lean-forward="false" selection-start-line="51" selection-start-column="9" selection-end-line="51" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -68,8 +57,8 @@
       <file leaf-file-name="fumia_simplified_nodes.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/networks/fumia_simplified_nodes.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="6" column="3" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="3" />
+            <state relative-caret-position="18">
+              <caret line="6" column="3" lean-forward="false" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -78,8 +67,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="22" column="13" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+            <state relative-caret-position="270">
+              <caret line="15" column="61" lean-forward="true" selection-start-line="15" selection-start-column="61" selection-end-line="15" selection-end-column="61" />
               <folding />
             </state>
           </provider>
@@ -96,9 +85,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>elk</find>
-      <find>max</find>
-      <find>p14</find>
       <find>myc</find>
       <find>ppend</find>
       <find>nut</find>
@@ -110,7 +96,6 @@
       <find>cyca</find>
       <find>Ubc</find>
       <find>nfkb</find>
-      <find>snail</find>
       <find>gsk3</find>
       <find>akt</find>
       <find>pip3</find>
@@ -122,8 +107,14 @@
       <find>p53/mdm2</find>
       <find>ikk</find>
       <find>GSK3</find>
-      <find>Bax</find>
+      <find>S</find>
       <find>bax</find>
+      <find>Bax</find>
+      <find>snail</find>
+      <find>self._single</find>
+      <find>self._graph</find>
+      <find>self._graph_generator</find>
+      <find>self._is_there_cycle</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -145,10 +136,10 @@
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/networks/fumia_simplified_nodes.txt" />
         <option value="$PROJECT_DIR$/networks/Fumoa_cytoscape.txt" />
-        <option value="$PROJECT_DIR$/network.py" />
         <option value="$PROJECT_DIR$/networks/Fumia_Cytoscape.csv" />
         <option value="$PROJECT_DIR$/networks/Fumia_cytoscape.txt" />
         <option value="$PROJECT_DIR$/checker.py" />
+        <option value="$PROJECT_DIR$/network.py" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/findfvs.py" />
       </list>
@@ -423,9 +414,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#59#77#0" expanded="true" />
-            <element signature="e#2167#2616#0" expanded="false" />
-            <element signature="e#2673#2914#0" expanded="false" />
-            <element signature="e#2991#3297#0" expanded="false" />
+            <element signature="e#2428#2669#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -452,9 +441,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#59#77#0" expanded="true" />
-            <element signature="e#2167#2616#0" expanded="false" />
-            <element signature="e#2673#2914#0" expanded="false" />
-            <element signature="e#2991#3297#0" expanded="false" />
+            <element signature="e#2428#2669#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -481,9 +468,7 @@
           <caret line="320" column="0" lean-forward="false" selection-start-line="320" selection-start-column="0" selection-end-line="320" selection-end-column="0" />
           <folding>
             <element signature="e#59#77#0" expanded="true" />
-            <element signature="e#2167#2616#0" expanded="false" />
-            <element signature="e#2673#2914#0" expanded="false" />
-            <element signature="e#2991#3297#0" expanded="false" />
+            <element signature="e#2428#2669#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -513,9 +498,7 @@
           <caret line="324" column="0" lean-forward="true" selection-start-line="324" selection-start-column="0" selection-end-line="324" selection-end-column="0" />
           <folding>
             <element signature="e#59#77#0" expanded="true" />
-            <element signature="e#2167#2616#0" expanded="false" />
-            <element signature="e#2673#2914#0" expanded="false" />
-            <element signature="e#2991#3297#0" expanded="false" />
+            <element signature="e#2428#2669#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -538,9 +521,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#59#77#0" expanded="true" />
-            <element signature="e#2167#2616#0" expanded="false" />
-            <element signature="e#2673#2914#0" expanded="false" />
-            <element signature="e#2991#3297#0" expanded="false" />
+            <element signature="e#2428#2669#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -569,7 +550,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -577,7 +557,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="606">
           <caret line="108" column="15" lean-forward="false" selection-start-line="108" selection-start-column="15" selection-end-line="108" selection-end-column="15" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -585,7 +564,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -593,59 +571,55 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
           <caret line="3" column="23" lean-forward="false" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/networks/mapk_annotation.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="17" column="9" lean-forward="false" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/networks/fumia_simplified_nodes.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="6" column="3" lean-forward="false" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/networks/Fumia_cytoscape.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="94" column="8" lean-forward="false" selection-start-line="94" selection-start-column="5" selection-end-line="94" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/networks/fumia_simplified_nodes.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="3" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/networks/mapk_annotation.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="295">
+          <caret line="51" column="9" lean-forward="false" selection-start-line="51" selection-start-column="9" selection-end-line="51" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/network.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="12" column="14" lean-forward="false" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
+        <state relative-caret-position="444">
+          <caret line="82" column="37" lean-forward="true" selection-start-line="82" selection-start-column="37" selection-end-line="82" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="22" column="13" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        <state relative-caret-position="270">
+          <caret line="15" column="61" lean-forward="true" selection-start-line="15" selection-start-column="61" selection-end-line="15" selection-end-column="61" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/findfvs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="133" column="32" lean-forward="true" selection-start-line="133" selection-start-column="32" selection-end-line="133" selection-end-column="32" />
+        <state relative-caret-position="288">
+          <caret line="52" column="13" lean-forward="true" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="13" />
           <folding>
             <element signature="e#59#77#0" expanded="true" />
-            <element signature="e#2167#2616#0" expanded="false" />
-            <element signature="e#2673#2914#0" expanded="false" />
-            <element signature="e#2991#3297#0" expanded="false" />
+            <element signature="e#2428#2669#0" expanded="false" />
           </folding>
         </state>
       </provider>
