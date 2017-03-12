@@ -11,6 +11,7 @@ class Network:
     n = 0
     matrix = []
     nodes = []
+    none_feedback = []
 
     def __init__(self, node_file, network_file):
         self.matrix = []
@@ -53,6 +54,7 @@ class Network:
                 if count > 0:
                     print("All none-feedback nodes are removed from the network.")
                 return
+            self.none_feedback.append(self.nodes[idx])
             self._remove_node_from_network(idx)
             count += 1
 
@@ -77,10 +79,9 @@ class Network:
                 return i
         return -1
 
-    def remove_nodes(self, combination, size):
-        modified_matrix = np.array(self.matrix)
-        for i in range(size):
-            if combination[i]:
-                modified_matrix[i,:] = False
-                modified_matrix[:,i] = False
+    def remove_nodes(self, combination):
+        modified_matrix = np.array(self.matrix, dtype='bool')
+        for i in combination:
+            modified_matrix[i, :] = False
+            modified_matrix[:, i] = False
         return modified_matrix
