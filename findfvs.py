@@ -148,7 +148,6 @@ class FVSFinder:
             if graph[i]:
                 if self._dfs_cycle(graph, i):
                     return True
-        print(1)
         return False
 
     def _dfs_cycle(self, graph, root):

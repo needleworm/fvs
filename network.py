@@ -54,7 +54,8 @@ class Network:
                 if count > 0:
                     print("All none-feedback nodes are removed from the network.")
                 return
-            self.none_feedback.append(self.nodes[idx])
+            if self.nodes[idx] not in self.none_feedback:
+                self.none_feedback.append(self.nodes[idx])
             self._remove_node_from_network(idx)
             count += 1
 
