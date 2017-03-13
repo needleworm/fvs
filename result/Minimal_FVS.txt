@@ -1,6 +1,7 @@
-['CycA', 'E2F', 'UbcH10', 'BAX', 'CycD', 'NFkB', 'p53']
-['CycA', 'E2F', 'UbcH10', 'BAX', 'NFkB', 'p27', 'p53']
-['CycA', 'E2F', 'UbcH10', 'Bcl2', 'CycD', 'Mdm2', 'NFkB']
-['CycA', 'E2F', 'UbcH10', 'Bcl2', 'CycD', 'NFkB', 'p53']
-['CycA', 'E2F', 'UbcH10', 'Bcl2', 'Mdm2', 'NFkB', 'p27']
-['CycA', 'E2F', 'UbcH10', 'Bcl2', 'NFkB', 'p27', 'p53']
+['UbcH10', 'E2F', 'CycA', 'NFkB', 'CycD', 'p53', 'Bcl2']
+['UbcH10', 'E2F', 'CycA', 'NFkB', 'CycD', 'p53', 'BAX']
+['UbcH10', 'E2F', 'CycA', 'NFkB', 'CycD', 'Mdm2', 'Bcl2']
+['UbcH10', 'E2F', 'CycA', 'NFkB', 'p53', 'Bcl2', 'p27']
+['UbcH10', 'E2F', 'CycA', 'NFkB', 'p53', 'BAX', 'p27']
+['UbcH10', 'E2F', 'CycA', 'NFkB', 'Mdm2', 'Bcl2', 'p27']
+

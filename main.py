@@ -1,8 +1,8 @@
 import findfvs as fv
 
-#a = fv.FVSFinder("mapk_nodes.txt", "mapk_annotation.txt")
-#b = fv.FVSFinder("toy_nodes.txt", "toy_annotation.txt")
-c = fv.FVSFinder("fumia_simplified_nodes.txt", "Fumia_cytoscape.txt")
+a = fv.FVSFinder("mapk_annotation.txt")
+b = fv.FVSFinder("toy_annotation.txt")
+c = fv.FVSFinder("Fumia_cytoscape.txt")
 
 
 fvs = (
@@ -22,7 +22,7 @@ fvs = (
 
 for f in fvs:
     print(f)
-    fv.FVSFinder("fumia_simplified_nodes.txt", "Fumia_cytoscape.txt", checker=True, fvs_found=f)
+    fv.FVSFinder("Fumia_cytoscape.txt", checker=True, fvs_found=f)
     print("\n\n\n")
 
-d = fv.FVSFinder("fumia_simplified_nodes.txt", "Fumia_cytoscape.txt", checker=True, fvs_found=fvs[0])
+d = fv.FVSFinder("Fumia_cytoscape.txt", checker=True, fvs_found=fvs[0])

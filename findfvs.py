@@ -6,22 +6,22 @@ needleworm@Kaist.ac.kr
 import numpy as np
 import network as nt
 import time
-import tarjan as TJ
+import tarjan as tj
+
 
 class FVSFinder:
-    feedback_vertex_set = {}
     n = 0
     current_size = 0
     network = None
     nodes = []
-    combinations = []
     single_comb = []
     self_feedback = []
     temp = []
 
-    def __init__(self, node_file, anno_file, find_minimal_only=True, checker=False, fvs_found = []):
-        self.network = nt.Network(node_file, anno_file)
+    def __init__(self, network_file, find_minimal_only=True, checker=False, fvs_found=[]):
+        self.network = nt.Network(network_file)
         self.n = self.network.n
+        self.self_feedback = []
         self.nodes = self.network.nodes
         self.temp = list(np.zeros(self.n, dtype="int"))
         if checker:
@@ -29,31 +29,34 @@ class FVSFinder:
         elif find_minimal_only:
             print("\nFinding Minimal Feedback Vertex Sets\n")
             self.find_minimal_fvs()
-
         else:
             print("\nFinding All Feedback Vertex Sets\n")
-            self._combinations()
             self.find_all_fvs()
+        print("**************** PROCESS DONE ****************\n\n\n")
 
-    def _tarjan_check(self, graph):
-        scc = TJ.tarjan(graph)
+    @staticmethod
+    def _tarjan_check(graph):
+        scc = tj.tarjan(graph)
         for sc in scc:
             if len(sc) > 1:
                 return True
         return False
 
     def checker(self, fvs_found):
+        before = time.time()
         for node in fvs_found:
-            self.network._remove_node_from_network(self.network.nodes.index(node))
-        self.network._trim_none_feedback_nodes()
+            self.network.remove_node_from_network(self.network.nodes.index(node))
+        self.network.trim_none_feedback_nodes()
         self.nodes = self.network.nodes
         self.n = self.network.n
         if self._tarjan_check(self._graph_generator(self.network.matrix, self.n)):
             print("The Set is Not FVS")
         else:
             print("This Set is an FVS")
+        print(str(time.time() - before) + " seconds spent for determination proces.")
 
     def find_minimal_fvs(self):
+        out = open("result/Minimal_FVS.txt", 'w')
         before = time.time()
         fvs, size = self._find_minimal_fvs()
         print("All process Done!")
@@ -63,7 +66,6 @@ class FVSFinder:
             exit(1)
         print("Size of minimal FVS is " + str(size) + '.')
         print("Total " + str(len(fvs)) + " minimal FVS exists.\n")
-        out = open("result/Minimal_FVS.txt", 'w')
         for i, fv in enumerate(fvs):
             out.write(str(self.self_feedback + fv))
             if i != len(fvs) - 1:
@@ -73,16 +75,6 @@ class FVSFinder:
     def _single_combination(self, r):
         self.single_comb = []
         self._combination_generator(self.temp, 0, self.n, r, 0, r)
-
-    def _comb_mody(self, comb, self_feedback):
-        for i, combi in enumerate(comb):
-            temp = []
-            for val in combi:
-                temp.append(val)
-            for idx in self_feedback:
-                temp.insert(idx, True)
-            comb[i] = temp
-        return comb
 
     def _combination_generator(self, lst, index, n, r, target, R):
         if r == 0:
@@ -102,8 +94,8 @@ class FVSFinder:
             else:
                 idx.append(i)
         for sf in self.self_feedback:
-            self.network._remove_node_from_network(self.network.nodes.index(sf))
-        self.network._trim_none_feedback_nodes()
+            self.network.remove_node_from_network(self.network.nodes.index(sf))
+        self.network.trim_none_feedback_nodes()
         self.n = self.network.n
         self.nodes = self.network.nodes
         return idx
@@ -129,8 +121,10 @@ class FVSFinder:
             print(str(time.time() - before_time) + " seconds spent for this step.\n")
         return fvs, 0
 
-    def _graph_generator(self, matrix, n):
+    def _graph_generator(self, matrix, n=0):
         graph = {}
+        if not n:
+            n = self.n
         for i in range(n):
             target = []
             for j in range(n):
