@@ -13,39 +13,38 @@ class Network:
     nodes = []
     none_feedback = []
 
-    def __init__(self, node_file, network_file):
-        self.matrix = []
-        self.nodes = []
-        self._update(node_file, network_file)
-        self._trim_none_feedback_nodes()
+    def __init__(self, network_file):
+        self._update(network_file)
+        self.trim_none_feedback_nodes()
 
-    def _update(self, node_file, network_file):
+    def _update(self, network_file):
         print("initiation.....")
-        f_node = open("networks/" + node_file)
-        f_network = open("networks/" + network_file)
+        f_nodes = open("networks/" + network_file, 'r')
         print("Network Reading...")
-        for line in f_node:
-            node = line.strip()
-            if node:
-                self.nodes.append(node)
+        splits = []
+        for line in f_nodes:
+            if line.strip():
+                split = line.strip().split(',')
+                splits.append(split)
+                if split[0].strip() not in self.nodes:
+                    self.nodes.append(split[0].strip())
+                if split[1].strip() not in self.nodes:
+                    self.nodes.append(split[1].strip())
+        f_nodes.close()
         self.n = len(self.nodes)
         self.matrix = np.zeros((self.n, self.n), dtype="bool")
 
-        for line in f_network:
-            if line.strip():
-                split = line.strip().split(',')
-                source = split[0].strip()
-                target = split[1].strip()
-                if (source not in self.nodes) or (target not in self.nodes):
-                    print("\nError Occured!\nplease check if both " + source + " and " +
-                          target + " are listed in your node file.\n")
-                    exit(1)
-                self.matrix[self.nodes.index(source), self.nodes.index(target)] = True
-        f_node.close()
-        f_network.close()
+        for split in splits:
+            source = split[0].strip()
+            target = split[1].strip()
+            if (source not in self.nodes) or (target not in self.nodes):
+                print("\nError Occured!\nplease check if both " + source + " and " +
+                      target + " are listed in your node file.\n")
+                exit(1)
+            self.matrix[self.nodes.index(source), self.nodes.index(target)] = True
         print("Adjacency Matrix Done")
 
-    def _trim_none_feedback_nodes(self):
+    def trim_none_feedback_nodes(self):
         count = 0
         while 1:
             idx = self._is_there_none_feedback_node()
@@ -56,10 +55,10 @@ class Network:
                 return
             if self.nodes[idx] not in self.none_feedback:
                 self.none_feedback.append(self.nodes[idx])
-            self._remove_node_from_network(idx)
+            self.remove_node_from_network(idx)
             count += 1
 
-    def _remove_node_from_network(self, idx):
+    def remove_node_from_network(self, idx):
         self.n -= 1
         new_matrix = np.zeros((self.n, self.n), dtype='bool')
         y = 0
