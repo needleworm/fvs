@@ -1,7 +1,9 @@
 """
 Author : Byunghyun Ban
-SBIE
+sbie.kaist.ac.kr
 needleworm@Kaist.ac.kr
+
+Korea Advanced Institute of Science and Technology
 """
 
 import numpy as np
