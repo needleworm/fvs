@@ -1,7 +1,9 @@
 """
 Author : Byunghyun Ban
-SBIE
+sbie.kaist.ac.kr
 needleworm@Kaist.ac.kr
+
+Korea Advanced Institute of Science and Technology
 """
 import numpy as np
 import network as nt
@@ -32,7 +34,9 @@ class FVSFinder:
         else:
             print("\nFinding All Feedback Vertex Sets\n")
             self.find_all_fvs()
-        print("**************** PROCESS DONE ****************\n\n\n")
+        print("**********************************************")
+        print("**************** PROCESS DONE ****************")
+        print("**********************************************\n\n\n")
 
     @staticmethod
     def _tarjan_check(graph):
@@ -107,8 +111,9 @@ class FVSFinder:
 
         if self.self_feedback:
             print("There are " + str(len(self.self_feedback)) + " self-feedback nodes on the network.\n\n")
-
-        print("********** Starting Main Process **********\n")
+        print("**********************************************")
+        print("*********** Starting  Main Process ***********")
+        print("**********************************************\n")
         for i in range(1, self.n + 1):
             before_time = time.time()
             print("Checking if size " + str(i + len(self.self_feedback)) + " FVS exists.")
