@@ -175,3 +175,9 @@ class FVSFinder:
         print("********************\n")
         print("Currently Updating This Method. Please use Old Version If you want to find All FVS.")
         print("********************\n")
+
+    def how_to_cite():
+        print("**********************************************")
+        print("Please Mention Github Repository\n   https://github.com/needleworm/fvs\n")
+        print("and its author, Byunghyun Ban (KAIST, South Korea.)")
+        print("**********************************************")

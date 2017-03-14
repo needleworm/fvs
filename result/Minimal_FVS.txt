@@ -1,7 +1,0 @@
-['UbcH10', 'E2F', 'CycA', 'NFkB', 'CycD', 'p53', 'Bcl2']
-['UbcH10', 'E2F', 'CycA', 'NFkB', 'CycD', 'p53', 'BAX']
-['UbcH10', 'E2F', 'CycA', 'NFkB', 'CycD', 'Mdm2', 'Bcl2']
-['UbcH10', 'E2F', 'CycA', 'NFkB', 'p53', 'Bcl2', 'p27']
-['UbcH10', 'E2F', 'CycA', 'NFkB', 'p53', 'BAX', 'p27']
-['UbcH10', 'E2F', 'CycA', 'NFkB', 'Mdm2', 'Bcl2', 'p27']
-
