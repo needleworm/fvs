@@ -1,6 +1,0 @@
-['UbcH10', 'CycA', 'CycD', 'NFkB', 'p53', 'Bcl2']
-['UbcH10', 'CycA', 'CycD', 'NFkB', 'p53', 'BAX']
-['UbcH10', 'CycA', 'CycD', 'NFkB', 'Mdm2', 'Bcl2']
-['UbcH10', 'CycA', 'NFkB', 'p53', 'Bcl2', 'p27']
-['UbcH10', 'CycA', 'NFkB', 'p53', 'BAX', 'p27']
-['UbcH10', 'CycA', 'NFkB', 'Mdm2', 'Bcl2', 'p27']
