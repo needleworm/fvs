@@ -26,6 +26,7 @@ class FVSFinder:
         self.self_feedback = []
         self.nodes = self.network.nodes
         self.temp = list(np.zeros(self.n, dtype="int"))
+        self._update_tarjan()
         if checker:
             self.checker(fvs_found)
         elif find_minimal_only:
@@ -45,6 +46,19 @@ class FVSFinder:
             if len(sc) > 1:
                 return True
         return False
+
+    def _update_tarjan(self):
+        non_scc = []
+        scc = tj.tarjan(self._graph_generator(self.network.matrix))
+        for sc in scc:
+            if len(sc) == 1:
+                non_scc.append(self.nodes[sc[0]])
+
+        for node in non_scc:
+            self.network.remove_node_from_network(self.network.nodes.index(node))
+        self.network.trim_none_feedback_nodes()
+        self.nodes = self.network.nodes
+        self.n = self.network.n
 
     def checker(self, fvs_found):
         before = time.time()
