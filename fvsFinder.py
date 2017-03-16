@@ -185,6 +185,7 @@ class FVSFinder:
             matrix = self.network.remove_nodes(comb)
             if self.n > 70:
                 temp = FVSFinder(matrix, True)
+                temp._update_tarjan()
                 if not temp._is_there_cycle(temp.network.matrix):
                     fvs = []
                     for idx in comb:
