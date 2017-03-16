@@ -42,6 +42,7 @@ class Network:
                     self.nodes.append(split[1].strip())
         f_nodes.close()
         self.n = len(self.nodes)
+        print("This network has " + str(self.n) + " Nodes")
         self.matrix = np.zeros((self.n, self.n), dtype="bool")
 
         for split in splits:
