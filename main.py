@@ -3,7 +3,7 @@ import fvsFinder as fv
 a = fv.FVSFinder("mapk_annotation.txt")
 b = fv.FVSFinder("toy_annotation.txt")
 c = fv.FVSFinder("Fumia_cytoscape.txt")
-#d = fv.FVSFinder("fumia_original.txt")
+d = fv.FVSFinder("fumia_original.txt")
 
 fvs = (
     ["E2F", "CycA", "UbcH10", "p27", "Snail", "p53", "Bcl2"],

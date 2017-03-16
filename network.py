@@ -15,9 +15,17 @@ class Network:
     nodes = []
     none_feedback = []
 
-    def __init__(self, network_file):
-        self._update(network_file)
+    def __init__(self, network_file, matrix=False):
+        if matrix:
+            self._pseudo_update(network_file)
+        else:
+            self._update(network_file)
         self.trim_none_feedback_nodes()
+
+    def _pseudo_update(self, matrix):
+        self.matrix = matrix
+        a, b = matrix.shape
+        self.n = a
 
     def _update(self, network_file):
         print("initiation.....")
