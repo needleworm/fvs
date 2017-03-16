@@ -20,8 +20,8 @@ class FVSFinder:
     self_feedback = []
     temp = []
 
-    def __init__(self, network_file, find_minimal_only=True, checker=False, fvs_found=[]):
-        self.network = nt.Network(network_file)
+    def __init__(self, network_file, find_minimal_only=True, checker=False, fvs_found=[], matrix=False):
+        self.network = nt.Network(network_file, matrix)
         self.n = self.network.n
         self.self_feedback = []
         self.nodes = self.network.nodes
@@ -169,6 +169,13 @@ class FVSFinder:
         FVS = []
         for comb in combinations:
             matrix = self.network.remove_nodes(comb)
+            if self.n > 70:
+                temp = FVSFinder(matrix, True)
+                if not temp._is_there_cycle(temp.network.matrix):
+                    fvs = []
+                    for idx in comb:
+                        fvs.append(self.nodes[idx])
+                    FVS.append(fvs)
             if not self._is_there_cycle(matrix):
                 fvs = []
                 for idx in comb:
