@@ -66,8 +66,8 @@ class FVSFinder:
         print("All process Done!")
         print("Total " + str(time.time() - before) + " seconds spent for overall process.\n")
         if not fvs:
-            print("Something is Wrong. Cannot find any FVS")
-            exit(1)
+            print("No FVS exists")
+            return
         print("Size of minimal FVS is " + str(size) + '.')
         print("Total " + str(len(fvs)) + " minimal FVS exists.\n")
         for i, fv in enumerate(fvs):
