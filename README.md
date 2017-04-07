@@ -23,4 +23,15 @@ FVS FINDER Documentation
 * tarjan library required.
 * Type "sudo pip3 install tarjan" on bash.
 
-*If you are using windows, please visit numpy and tarjan webpage to install Dependencies.
+*If you are using windows, please visit numpy and tarjan webpage to install Dependencies.*
+
+## 3 . How to use
+Please import FVSFinder on python3 environment.
+> Example
+>>  import FVSFinder as fv
+
+>>  fv.FVSFinder("network_file.txt")
+
+network file should be placed in 'network/'
+
+The result will be saved in 'results/'
