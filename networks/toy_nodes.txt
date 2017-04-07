@@ -1,4 +1,0 @@
-nodeA
-nodeB
-nodeC
-nodeD
