@@ -67,7 +67,7 @@ class FVSFinder:
         out = open("result/maxcoverage.txt", "w")
         out.write("Original Network has " + str(original_numfeedbacks) + " feedbacks.")
         for node, num in numfeedbacks:
-            line = "Removal of Node " + self.nodes[node] + " reduces number of feedbacks into " + str(num) + ".\n"
+            line = "Removal of Node " + self.nodes[node] + " reduces number of SCCs into " + str(num) + ".\n"
             print(line)
             out.write(line)
         out.close()
