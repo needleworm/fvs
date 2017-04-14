@@ -20,20 +20,26 @@ class FVSFinder:
     self_feedback = []
     temp = []
 
-    def __init__(self, network_file, find_minimal_only=True, checker=False, fvs_found=[], matrix=False):
+    def __init__(self, network_file, find_minimal_only=True, mode="minimal", fvs_found=[], matrix=False):
+        # mode: minimal, checker, maxcover
         self.network = nt.Network(network_file, matrix)
         self.n = self.network.n
         self.self_feedback = []
         self.nodes = self.network.nodes
         self.temp = list(np.zeros(self.n, dtype="int"))
-        if checker:
+        if mode == "checker":
             self.checker(fvs_found)
-        elif find_minimal_only:
+        elif mode == "minimal" and find_minimal_only:
             print("\nFinding Minimal Feedback Vertex Sets\n")
             self.find_minimal_fvs()
+        elif mode == "maxcover":
+            print("\nFinding Coverage\n")
+            self.maxcover()
+        """
         else:
             print("\nFinding All Feedback Vertex Sets\n")
             self.find_all_fvs()
+        """
         print("**********************************************")
         print("**************** PROCESS DONE ****************")
         print("**********************************************\n\n\n")
@@ -45,6 +51,39 @@ class FVSFinder:
             if len(sc) > 1:
                 return True
         return False
+
+    def maxcover(self):
+        numfeedbacks = []
+        graph = self._graph_generator(self.network.matrix)
+        scc = tj.tarjan(graph)
+        original_numfeedbacks = self._numfeedbacks(scc)
+        for i in range(self.n):
+            mod_matrix = np.delete(self.network.matrix, i, 0)
+            mod_matrix = np.delete(mod_matrix, i, 1)
+            graph = self._graph_generator(mod_matrix, n= self.n-1)
+            scc = tj.tarjan(graph)
+            numfeedbacks.append((i, self._numfeedbacks(scc)))
+
+        out = open("result/maxcoverage.txt", "w")
+        out.write("Original Network has " + str(original_numfeedbacks) + " feedbacks.")
+        for node, num in numfeedbacks:
+            line = "Removal of Node " + self.nodes[node] + " reduces number of feedbacks into " + str(num) + ".\n"
+            print(line)
+            out.write(line)
+        out.close()
+
+
+
+
+    @staticmethod
+    def _numfeedbacks(sccs):
+        scc = 0
+        for element in sccs:
+            if len(element) > 1:
+                scc += 1
+        return scc
+
+
 
     def checker(self, fvs_found):
         before = time.time()
