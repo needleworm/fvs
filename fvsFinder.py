@@ -203,7 +203,7 @@ class FVSFinder:
             comb = pickle.load("combinations49_" + str(i) + ".pkl")
             for el in comb:
                 matrix = self.network.remove_nodes(el)                
-                if not self._is_there_cycle(matrix)  
+                if not self._is_there_cycle(matrix):
                     fvs = []
                     for idx in el:
                         fvs.append(self.nodes[idx])
