@@ -20,9 +20,11 @@ class FVSFinder:
     self_feedback = []
     temp = []
 
-    def __init__(self, network_file, find_minimal_only=True, mode="minimal", fvs_found=[], matrix=False):
+    def __init__(self, network_file, find_minimal_only=True, mode="minimal", fvs_found=[],
+            matrix=False, xheader = False, yheader = False, threshold=3, trim=True):
+
         # mode: minimal, checker, maxcover
-        self.network = nt.Network(network_file, matrix)
+        self.network = nt.Network(network_file, matrix, xheader, yheader, threshold, trim)
         self.n = self.network.n
         self.self_feedback = []
         self.nodes = self.network.nodes
