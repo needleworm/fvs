@@ -9,3 +9,5 @@ import fvsFinder as fv
 #g = fv.FVSFinder("test1.csv", mode="maxcover")
 
 #e = fv.FVSFinder("test1.csv", mode="checker", fvs_found = ['FoxD-a/b'])
+
+f = fv.FVSFinder("drosophila.csv", matrix=True, xheader=True, yheader=True, precomb=True)
