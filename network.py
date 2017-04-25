@@ -15,20 +15,41 @@ class Network:
     nodes = []
     none_feedback = []
 
-    def __init__(self, network_file, matrix=False):
+    def __init__(self, network_file, matrix=False, xheader=False, yheader=False, threshold=3, trim=True):
         if matrix:
-            self._pseudo_update(network_file)
+            self._pseudo_update(network_file, xheader, yheader, threshold)
         else:
             self._update(network_file)
-        self.trim_none_feedback_nodes()
+        if trim:
+            self.trim_none_feedback_nodes()
 
-    def _pseudo_update(self, matrix):
-        self.matrix = matrix
-        a, b = matrix.shape
-        self.n = a
+    def _pseudo_update(self, network_file, xheader, yheader, threshold):
+        print("initialization....")
+        nfile = open("networks/" + network_file, 'r')
+        if xheader:
+            splits = nfile.readline().strip().split(',')
+        for el in splits:
+            if el:
+                self.nodes.append(el)
+        self.n = len(self.nodes)
+        self.matrix = np.zeros((self.n, self.n), dtype=np.bool)
+        for i in range(self.n):
+            splits = nfile.readline().strip().split(',')
+            if yheader:
+                if self.nodes[i] != splits[0]:
+                    print("x header is " +  nodes[i] + " but y header is " + splits[0] + ".\n")
+                    exit(1)
+                else:
+                    splits = splits[1:]
+            for j, el in enumerate(splits):
+                if float(el) > threshold:
+                    self.matrix[i, j] = True
+
+        print("Adjacency Matrix Done")
+        print("Total " + str(self.n) + " nodes exists")
 
     def _update(self, network_file):
-        print("initiation.....")
+        print("initialization.....")
         f_nodes = open("networks/" + network_file, 'r')
         print("Network Reading...")
         splits = []
@@ -42,7 +63,6 @@ class Network:
                     self.nodes.append(split[1].strip())
         f_nodes.close()
         self.n = len(self.nodes)
-        print("This network has " + str(self.n) + " Nodes")
         self.matrix = np.zeros((self.n, self.n), dtype="bool")
 
         for split in splits:
@@ -54,6 +74,7 @@ class Network:
                 exit(1)
             self.matrix[self.nodes.index(source), self.nodes.index(target)] = True
         print("Adjacency Matrix Done")
+        print("Total " + str(self.n) + " nodes exists")
 
     def trim_none_feedback_nodes(self):
         count = 0
