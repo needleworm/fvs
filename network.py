@@ -15,15 +15,15 @@ class Network:
     nodes = []
     none_feedback = []
 
-    def __init__(self, network_file, matrix=False, xheader=False, yheader=False, threshold=3, trim=True):
+    def __init__(self, network_file, matrix=False, xheader=False, yheader=False, threshold=3, trim=True, reverse=False):
         if matrix:
-            self._pseudo_update(network_file, xheader, yheader, threshold)
+            self._pseudo_update(network_file, xheader, yheader, threshold, reverse)
         else:
             self._update(network_file)
         if trim:
             self.trim_none_feedback_nodes()
 
-    def _pseudo_update(self, network_file, xheader, yheader, threshold):
+    def _pseudo_update(self, network_file, xheader, yheader, threshold, reverse):
         print("initialization....")
         nfile = open("networks/" + network_file, 'r')
         if xheader:
@@ -42,8 +42,12 @@ class Network:
                 else:
                     splits = splits[1:]
             for j, el in enumerate(splits):
-                if float(el) > threshold:
+                if reverse:
+                    if float(el) < threshold and i != j:
+                        self.matrix[i, j] = True
+                elif float(el) > threshold:
                     self.matrix[i, j] = True
+        nfile.close()
 
         print("Adjacency Matrix Done")
         print("Total " + str(self.n) + " nodes exists")
@@ -75,6 +79,7 @@ class Network:
             self.matrix[self.nodes.index(source), self.nodes.index(target)] = True
         print("Adjacency Matrix Done")
         print("Total " + str(self.n) + " nodes exists")
+
 
     def trim_none_feedback_nodes(self):
         count = 0

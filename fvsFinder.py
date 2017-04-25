@@ -9,6 +9,7 @@ import numpy as np
 import network as nt
 import time
 import tarjan as tj
+import itertools
 
 
 class FVSFinder:
@@ -19,12 +20,13 @@ class FVSFinder:
     single_comb = []
     self_feedback = []
     temp = []
+    index =[]
 
     def __init__(self, network_file, find_minimal_only=True, mode="minimal", fvs_found=[],
-            matrix=False, xheader = False, yheader = False, threshold=3, trim=True):
+            matrix=False, xheader = False, yheader = False, threshold=3, trim=True, reverse=False):
 
         # mode: minimal, checker, maxcover
-        self.network = nt.Network(network_file, matrix, xheader, yheader, threshold, trim)
+        self.network = nt.Network(network_file, matrix, xheader, yheader, threshold, trim, reverse)
         self.n = self.network.n
         self.self_feedback = []
         self.nodes = self.network.nodes
@@ -75,8 +77,6 @@ class FVSFinder:
         out.close()
 
 
-
-
     @staticmethod
     def _numfeedbacks(sccs):
         scc = 0
@@ -84,8 +84,6 @@ class FVSFinder:
             if len(element) > 1:
                 scc += 1
         return scc
-
-
 
     def checker(self, fvs_found):
         before = time.time()
@@ -117,20 +115,6 @@ class FVSFinder:
                 out.write('\n')
         out.close()
 
-    def _single_combination(self, r):
-        self.single_comb = []
-        self._combination_generator(self.temp, 0, self.n, r, 0, r)
-
-    def _combination_generator(self, lst, index, n, r, target, R):
-        if r == 0:
-            self.single_comb.append(list(lst[:R]))
-        elif target == n:
-            return
-        else:
-            lst[index] = target
-            self._combination_generator(lst, index + 1, n, r - 1, target + 1, R)
-            self._combination_generator(lst, index, n, r, target + 1, R)
-
     def _find_self_feedback(self):
         idx = []
         for i in range(self.n):
@@ -155,11 +139,11 @@ class FVSFinder:
         print("**********************************************")
         print("*********** Starting  Main Process ***********")
         print("**********************************************\n")
-        for i in range(1, self.n + 1):
+        self._index_update()
+        for i in range(1, self.n):
             before_time = time.time()
             print("Checking if size " + str(i + len(self.self_feedback)) + " FVS exists.")
-            self._single_combination(i)
-            fvs = self._find_feedback_vertex_sets(self.single_comb)
+            fvs = self._find_feedback_vertex_sets(i)
             if fvs:
                 print(str(time.time() - before) + " seconds spent for Finding Minimal FVS.\n")
                 return fvs, i + len(self.self_feedback)
@@ -206,9 +190,13 @@ class FVSFinder:
 
         return False
 
-    def _find_feedback_vertex_sets(self, combinations):
+    def _index_update(self):
+        for i in range(self.n):
+            self.index.append(i)
+
+    def _find_feedback_vertex_sets(self, i):
         FVS = []
-        for comb in combinations:
+        for comb in itertools.combinations(self.index, i):
             matrix = self.network.remove_nodes(comb)
             if self.n > 70:
                 temp = FVSFinder(matrix, True)
