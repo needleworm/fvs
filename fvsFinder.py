@@ -10,6 +10,7 @@ import network as nt
 import time
 import tarjan as tj
 import itertools
+import pickle
 
 
 class FVSFinder:
@@ -21,9 +22,10 @@ class FVSFinder:
     self_feedback = []
     temp = []
     index =[]
+    precomb = False
 
     def __init__(self, network_file, find_minimal_only=True, mode="minimal", fvs_found=[],
-            matrix=False, xheader = False, yheader = False, threshold=3, trim=True, reverse=False):
+            matrix=False, xheader = False, yheader = False, threshold=3, trim=True, reverse=False, precomb=False):
 
         # mode: minimal, checker, maxcover
         self.network = nt.Network(network_file, matrix, xheader, yheader, threshold, trim, reverse)
@@ -31,6 +33,7 @@ class FVSFinder:
         self.self_feedback = []
         self.nodes = self.network.nodes
         self.temp = list(np.zeros(self.n, dtype="int"))
+        self.precomb = precomb
         if mode == "checker":
             self.checker(fvs_found)
         elif mode == "minimal" and find_minimal_only:
@@ -99,7 +102,7 @@ class FVSFinder:
         print(str(time.time() - before) + " seconds spent for determination proces.")
 
     def find_minimal_fvs(self):
-        out = open("result/Minimal_FVS.txt", 'w')
+        out = open("result/Minimal_FVSs.txt", 'w')
         before = time.time()
         fvs, size = self._find_minimal_fvs()
         print("All process Done!")
@@ -196,6 +199,17 @@ class FVSFinder:
 
     def _find_feedback_vertex_sets(self, i):
         FVS = []
+        if self.precomb:
+            comb = pickle.load("combinations49_" + str(i) + ".pkl")
+            for el in comb:
+                matrix = self.network.remove_nodes(el)                
+                if not self._is_there_cycle(matrix)  
+                    fvs = []
+                    for idx in el:
+                        fvs.append(self.nodes[idx])
+                    FVS.append(fvs)
+            return(FVS)      
+
         for comb in itertools.combinations(self.index, i):
             matrix = self.network.remove_nodes(comb)
             if self.n > 70:
