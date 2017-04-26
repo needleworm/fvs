@@ -51,6 +51,7 @@ class Network:
 
         print("Adjacency Matrix Done")
         print("Total " + str(self.n) + " nodes exists")
+        print("Total " + str(np.sum(self.matrix)) + " Edges exists")
 
     def _update(self, network_file):
         print("initialization.....")
