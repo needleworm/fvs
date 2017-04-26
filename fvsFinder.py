@@ -11,6 +11,7 @@ import time
 import tarjan as tj
 import itertools
 import pickle
+import math
 
 
 class FVSFinder:
@@ -209,7 +210,7 @@ class FVSFinder:
                         fvs.append(self.nodes[idx])
                     FVS.append(fvs)
             return(FVS)
-
+        print(str(int(math.factorial(self.n) / math.factorial(i) / math.factorial(self.n - i))) + " Kinds Of Combinations Exists...")
         for comb in itertools.combinations(self.index, i):
             matrix = self.network.remove_nodes(comb)
             if not self._is_there_cycle(matrix):
