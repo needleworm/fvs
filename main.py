@@ -10,4 +10,4 @@ import fvsFinder as fv
 
 #e = fv.FVSFinder("test1.csv", mode="checker", fvs_found = ['FoxD-a/b'])
 
-f = fv.FVSFinder("drosophila.csv", matrix=True, xheader=True, yheader=True, precomb=True)
+f = fv.FVSFinder("c_elegans.csv", matrix=True, xheader=True, yheader=True, threshold=0)

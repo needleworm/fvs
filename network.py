@@ -37,7 +37,7 @@ class Network:
             splits = nfile.readline().strip().split(',')
             if yheader:
                 if self.nodes[i] != splits[0]:
-                    print("x header is " +  nodes[i] + " but y header is " + splits[0] + ".\n")
+                    print("x header is " +  self.nodes[i] + " but y header is " + splits[0] + ".\n")
                     exit(1)
                 else:
                     splits = splits[1:]

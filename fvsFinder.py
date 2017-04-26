@@ -28,7 +28,7 @@ class FVSFinder:
             matrix=False, xheader = False, yheader = False, threshold=3, trim=True, reverse=False, precomb=False):
 
         # mode: minimal, checker, maxcover
-        self.network = nt.Network(network_file, matrix, xheader, yheader, threshold, trim, reverse)
+        self.network = nt.Network(network_file, matrix=matrix, xheader=xheader, yheader=yheader, threshold=threshold, trim=trim, reverse=reverse)
         self.n = self.network.n
         self.self_feedback = []
         self.nodes = self.network.nodes
@@ -202,24 +202,16 @@ class FVSFinder:
         if self.precomb:
             comb = pickle.load("combinations49_" + str(i) + ".pkl")
             for el in comb:
-                matrix = self.network.remove_nodes(el)                
+                matrix = self.network.remove_nodes(el)
                 if not self._is_there_cycle(matrix):
                     fvs = []
                     for idx in el:
                         fvs.append(self.nodes[idx])
                     FVS.append(fvs)
-            return(FVS)      
+            return(FVS)
 
         for comb in itertools.combinations(self.index, i):
             matrix = self.network.remove_nodes(comb)
-            if self.n > 70:
-                temp = FVSFinder(matrix, True)
-                temp._update_tarjan()
-                if not temp._is_there_cycle(temp.network.matrix):
-                    fvs = []
-                    for idx in comb:
-                        fvs.append(self.nodes[idx])
-                    FVS.append(fvs)
             if not self._is_there_cycle(matrix):
                 fvs = []
                 for idx in comb:
