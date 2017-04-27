@@ -10,4 +10,6 @@ import fvsFinder as fv
 
 #e = fv.FVSFinder("test1.csv", mode="checker", fvs_found = ['FoxD-a/b'])
 
-f = fv.FVSFinder("c_elegans.csv", matrix=True, xheader=True, yheader=True, threshold=0)
+#f = fv.FVSFinder("c_elegans.csv", matrix=True, xheader=True, yheader=True, threshold=0)
+
+g = fv.FVSFinder("aging.csv", "aging_fvs.txt")

@@ -24,8 +24,9 @@ class FVSFinder:
     temp = []
     index =[]
     precomb = False
+    outputfile = ""
 
-    def __init__(self, network_file, find_minimal_only=True, mode="minimal", fvs_found=[],
+    def __init__(self, network_file, output_file="Minimal_FVSs", find_minimal_only=True, mode="minimal", fvs_found=[],
             matrix=False, xheader = False, yheader = False, threshold=3, trim=True, reverse=False, precomb=False):
 
         # mode: minimal, checker, maxcover
@@ -35,6 +36,7 @@ class FVSFinder:
         self.nodes = self.network.nodes
         self.temp = list(np.zeros(self.n, dtype="int"))
         self.precomb = precomb
+        self.outputfile = output_file
         if mode == "checker":
             self.checker(fvs_found)
         elif mode == "minimal" and find_minimal_only:
@@ -72,7 +74,10 @@ class FVSFinder:
             scc = tj.tarjan(graph)
             numfeedbacks.append((i, self._numfeedbacks(scc)))
 
-        out = open("result/maxcoverage.txt", "w")
+        if not self.outputfile:
+            self.outputfile = "maxcoverage.txt"
+
+        out = open("result/"+self.outputfile, "w")
         out.write("Original Network has " + str(original_numfeedbacks) + " feedbacks.")
         for node, num in numfeedbacks:
             line = "Removal of Node " + self.nodes[node] + " reduces number of SCCs into " + str(num) + ".\n"
@@ -103,7 +108,7 @@ class FVSFinder:
         print(str(time.time() - before) + " seconds spent for determination proces.")
 
     def find_minimal_fvs(self):
-        out = open("result/Minimal_FVSs.txt", 'w')
+        out = open("result/" + self.outputfile, 'w')
         before = time.time()
         fvs, size = self._find_minimal_fvs()
         print("All process Done!")
@@ -195,8 +200,14 @@ class FVSFinder:
         return False
 
     def _index_update(self):
+        index = []
         for i in range(self.n):
-            self.index.append(i)
+            index.append(i)
+        for el in index:
+            if np.sum(self.network.matrix[el, :]) == 1 and np.sum(self.network.matrix[:, el]):
+                pass
+            else:
+                self.index.append(el)
 
     def _find_feedback_vertex_sets(self, i):
         FVS = []
@@ -210,6 +221,7 @@ class FVSFinder:
                         fvs.append(self.nodes[idx])
                     FVS.append(fvs)
             return(FVS)
+
         for comb in itertools.combinations(self.index, i):
             matrix = self.network.remove_nodes(comb)
             if not self._is_there_cycle(matrix):
