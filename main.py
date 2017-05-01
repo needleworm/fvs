@@ -12,4 +12,6 @@ import fvsFinder as fv
 
 #f = fv.FVSFinder("c_elegans.csv", matrix=True, xheader=True, yheader=True, threshold=0)
 
-g = fv.FVSFinder("aging.csv", "aging_fvs.txt")
+#g = fv.FVSFinder("aging.csv", "aging_fvs.txt")
+
+test = fv.FVSFinder("CAL12T_LUNG_network.txt")

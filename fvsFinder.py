@@ -22,11 +22,10 @@ class FVSFinder:
     single_comb = []
     self_feedback = []
     temp = []
-    index =[]
     precomb = False
     outputfile = ""
 
-    def __init__(self, network_file, output_file="Minimal_FVSs", find_minimal_only=True, mode="minimal", fvs_found=[],
+    def __init__(self, network_file, output_file="Minimal_FVSs.txt", find_minimal_only=True, mode="minimal", fvs_found=[],
             matrix=False, xheader = False, yheader = False, threshold=3, trim=True, reverse=False, precomb=False):
 
         # mode: minimal, checker, maxcover
@@ -148,7 +147,6 @@ class FVSFinder:
         print("**********************************************")
         print("*********** Starting  Main Process ***********")
         print("**********************************************\n")
-        self._index_update()
         for i in range(1, self.n):
             before_time = time.time()
             print("Checking if size " + str(i + len(self.self_feedback)) + " FVS exists.")
@@ -199,16 +197,6 @@ class FVSFinder:
 
         return False
 
-    def _index_update(self):
-        index = []
-        for i in range(self.n):
-            index.append(i)
-        for el in index:
-            if np.sum(self.network.matrix[el, :]) == 1 and np.sum(self.network.matrix[:, el]):
-                pass
-            else:
-                self.index.append(el)
-
     def _find_feedback_vertex_sets(self, i):
         FVS = []
         if self.precomb:
@@ -222,7 +210,8 @@ class FVSFinder:
                     FVS.append(fvs)
             return(FVS)
 
-        for comb in itertools.combinations(self.index, i):
+        for comb in itertools.combinations(range(self.n), i):
+            print(comb)
             matrix = self.network.remove_nodes(comb)
             if not self._is_there_cycle(matrix):
                 fvs = []
