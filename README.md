@@ -12,7 +12,8 @@ FVS FINDER Documentation
 * needleworm@kaist.ac.kr
 
 ## 1. Environments
-* Python
+* Python3
+* Don't support any problems from python2 environment
 
 ## 2. Dependencies
 ### 1. numpy
