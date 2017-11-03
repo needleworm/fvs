@@ -3,13 +3,14 @@ FVS FINDER Documentation
 
 # AUTHOR
 >Byunghyun Ban
-* CTO of New Page Inc. (2011~2013)
-* CEO & CTO of Studio Mic Inc. (2015)
+* Imagination Garden Inc. Co-founder
 * CFO of Cheesecake Studio Inc. (2016)
+* CEO & CTO of Studio Mic Inc. (2015)
+* CTO of New Page Inc. (2011~2013)
 * Graduate Student(Master's Program) @ Bio and Brain Engineering Department, KAIST (Korea Advanced Institute of Science and Technology)
 * Systems Biology and Inspired Engineering(SBIE) Lab.
 * http://sibe.kaist.ac.kr
-* needleworm@kaist.ac.kr
+* bhban@kaist.ac.kr
 
 ## 1. Environments
 * Python3
