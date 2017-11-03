@@ -1,2 +1,0 @@
-['nodeB', 'nodeA']
-['nodeB', 'nodeC']
