@@ -3,7 +3,7 @@ FVS FINDER Documentation
 
 # AUTHOR
 >Byunghyun Ban
-* Imagination Garden Inc. Co-founder
+* CTO of Imagination Garden Inc. (2018~)
 * CFO of Cheesecake Studio Inc. (2016)
 * CEO & CTO of Studio Mic Inc. (2015)
 * CTO of New Page Inc. (2011~2013)
