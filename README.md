@@ -7,10 +7,10 @@ FVS FINDER Documentation
 * CFO of Cheesecake Studio Inc. (2016)
 * CEO & CTO of Studio Mic Inc. (2015)
 * CTO of New Page Inc. (2011~2013)
-* Graduate Student(Master's Program) @ Bio and Brain Engineering Department, KAIST (Korea Advanced Institute of Science and Technology)
+* Master's Degree @ Bio and Brain Engineering Department, KAIST (Korea Advanced Institute of Science and Technology)
 * Systems Biology and Inspired Engineering(SBIE) Lab.
-* http://sibe.kaist.ac.kr
 * bhban@kaist.ac.kr
+* bahn1307@gmail.com
 
 ## 1. Environments
 * Python3
