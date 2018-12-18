@@ -1,6 +1,7 @@
 nodeA, nodeB
-nodeA, nodeC
+nodeB, nodeA
+nodeA, nodeA
+nodeA, nodeD
+nodeD, nodeC
+nodeC, nodeB
 nodeB, nodeD
-nodeD, nodeA
-nodeB, nodeB
-nodeC, nodeA

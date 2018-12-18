@@ -110,17 +110,21 @@ class FVSFinder:
         out = open("result/" + self.outputfile, 'w')
         before = time.time()
         fvs, size = self._find_minimal_fvs()
+        size += len(self.self_feedback)
         print("All process Done!")
         print("Total " + str(time.time() - before) + " seconds spent for overall process.\n")
-        if not fvs:
+        if not size:
             print("No FVS exists")
             return
         print("Size of minimal FVS is " + str(size) + '.')
         print("Total " + str(len(fvs)) + " minimal FVS exists.\n")
-        for i, fv in enumerate(fvs):
-            out.write(str(self.self_feedback + fv))
-            if i != len(fvs) - 1:
-                out.write('\n')
+        if not fvs:
+            out.write(str(self.self_feedback))
+        else:
+            for i, fv in enumerate(fvs):
+                out.write(str(self.self_feedback + fv))
+                if i != len(fvs) - 1:
+                    out.write('\n')
         out.close()
 
     def _find_self_feedback(self):
