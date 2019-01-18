@@ -14,4 +14,4 @@ import fvsFinder as fv
 
 #g = fv.FVSFinder("aging.csv", "aging_fvs.txt")
 
-test = fv.FVSFinder("toy.txt")
+test = fv.FVSFinder("kys_link.txt")
